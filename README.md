@@ -10,6 +10,7 @@ Single IP Check
 To check a single IP, run the script with the IP address and port as arguments.
 
 python3 check_cve_2024_6387.py <ip> <port>
+
 Example:
 python3 check_cve_2024_6387.py 192.168.1.1 22
 
@@ -18,6 +19,7 @@ Multiple IPs Check
 To check multiple IPs, provide a file containing a list of IP addresses (one per line) as the first argument, and the port as the second argument.
 
 python3 check_cve_2024_6387.py <file> <port>
+
 Example:
 python3 check_cve_2024_6387.py ip_list.txt 22
 
