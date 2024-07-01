@@ -30,6 +30,8 @@ def check_vulnerability(ip, port):
         ]
 
         if any(version in response for version in vulnerable_versions):
+            versionvuln = response.strip().decode("utf-8")
+            print(f"[+] Version detected is {versionvuln}")
             print(f"[+] Server at {ip}:{port} is running a vulnerable version of OpenSSH")
             return True
         else:
@@ -60,3 +62,4 @@ if __name__ == "__main__":
             print(f"[+] Server at {ip}:{port} is likely vulnerable to CVE-2024-6387.")
         else:
             print(f"[-] Server at {ip}:{port} is not vulnerable to CVE-2024-6387.")
+
