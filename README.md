@@ -1,4 +1,4 @@
-# check_cve_2024_6387
+![image](https://github.com/kuffsit/check_cve_2024_6387/assets/117442973/f3c921bd-c45d-4a5a-b1d2-c31a772c0949)# check_cve_2024_6387
 
 README
 Description
@@ -12,15 +12,17 @@ To check a single IP, run the script with the IP address and port as arguments.
 python3 check_cve_2024_6387.py <ip> <port>
 
 Example:
+```sh
 python3 check_cve_2024_6387.py 192.168.1.1 22
 
 Multiple IPs Check
 
 To check multiple IPs, provide a file containing a list of IP addresses (one per line) as the first argument, and the port as the second argument.
-
+```sh
 python3 check_cve_2024_6387.py <file> <port>
 
 Example:
+```sh
 python3 check_cve_2024_6387.py ip_list.txt 22
 
 Notes
