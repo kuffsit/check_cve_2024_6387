@@ -39,11 +39,13 @@ Example Output
 ```sh
 python3 check_cve_2024_6387.py 192.168.1.1 22
 [+] Server at 192.168.1.1:22 is running a vulnerable version of OpenSSH
+[+] Version detected is SSH-2.0-OpenSSH_9.0p1 Ubuntu-1ubuntu8.7
 [+] Server at 192.168.1.1:22 is likely vulnerable to CVE-2024-6387.
 
 python3 check_cve_2024_6387.py ip_list.txt 22
 [-] Server at 192.168.1.2:22 is not running a vulnerable version of OpenSSH
 [+] Server at 192.168.1.3:22 is running a vulnerable version of OpenSSH
+[+] Version detected is SSH-2.0-OpenSSH_9.0p1 Ubuntu-1ubuntu8.7
 [+] Server at 192.168.1.3:22 is likely vulnerable to CVE-2024-6387.
 ```
 This setup ensures that you can check both single and multiple IPs for the vulnerability in a straightforward manner.
