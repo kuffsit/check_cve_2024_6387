@@ -7,11 +7,11 @@ def check_vulnerability(ip, port):
         sock.settimeout(5)
         sock.connect((ip, port))
 
-        # Отправляем строку версии SSH
+        # Send SSH version string
         sock.sendall(b'SSH-2.0-OpenSSH\r\n')
         response = sock.recv(1024)
 
-        # Проверяем, есть ли уязвимая версия OpenSSH
+        # Check for vulnerable OpenSSH versions
         vulnerable_versions = [
             b'SSH-2.0-OpenSSH_8.5p1',
             b'SSH-2.0-OpenSSH_8.6p1',
@@ -29,24 +29,24 @@ def check_vulnerability(ip, port):
         ]
 
         if any(version in response for version in vulnerable_versions):
-            print(f"[+] Сервер по адресу {ip}:{port} использует уязвимую версию OpenSSH")
+            print(f"[+] Server at {ip}:{port} is running a vulnerable version of OpenSSH")
             return True
         else:
-            print(f"[-] Сервер по адресу {ip}:{port} не использует уязвимую версию OpenSSH")
+            print(f"[-] Server at {ip}:{port} is not running a vulnerable version of OpenSSH")
             return False
     except Exception as e:
-        print(f"[-] Не удалось подключиться к {ip}:{port}: {e}")
+        print(f"[-] Failed to connect to {ip}:{port}: {e}")
         return False
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print(f"Использование: {sys.argv[0]} <ip> <port или путь к файлу>")
+        print(f"Usage: {sys.argv[0]} <ip> <port or file path>")
         sys.exit(1)
 
     ip_or_file = sys.argv[1]
     port = int(sys.argv[2])
 
-    # Проверка, если ip_or_file является файлом
+    # Check if ip_or_file is a file
     try:
         with open(ip_or_file, 'r') as file:
             ips = file.readlines()
@@ -56,6 +56,6 @@ if __name__ == "__main__":
     for ip in ips:
         ip = ip.strip()
         if check_vulnerability(ip, port):
-            print(f"[+] Сервер по адресу {ip}:{port} вероятно уязвим к CVE-2024-6387.")
+            print(f"[+] Server at {ip}:{port} is likely vulnerable to CVE-2024-6387.")
         else:
-            print(f"[-] Сервер по адресу {ip}:{port} не уязвим к CVE-2024-6387.")
+            print(f"[-] Server at {ip}:{port} is not vulnerable to CVE-2024-6387.")
