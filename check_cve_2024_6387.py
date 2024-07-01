@@ -7,7 +7,7 @@ def check_vulnerability(ip, port):
         sock.settimeout(5)
         sock.connect((ip, port))
 
-        # Send SSH version string
+        # Send the SSH version string
         sock.sendall(b'SSH-2.0-OpenSSH\r\n')
         response = sock.recv(1024)
 
@@ -25,7 +25,8 @@ def check_vulnerability(ip, port):
             b'SSH-2.0-OpenSSH_9.4p1',
             b'SSH-2.0-OpenSSH_9.5p1',
             b'SSH-2.0-OpenSSH_9.6p1',
-            b'SSH-2.0-OpenSSH_9.7p1'
+            b'SSH-2.0-OpenSSH_9.7p1',
+            b'SSH-2.0-OpenSSH_9.8p1'
         ]
 
         if any(version in response for version in vulnerable_versions):
