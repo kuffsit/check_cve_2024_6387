@@ -28,10 +28,10 @@ def check_vulnerability(ip, port):
             b'SSH-2.0-OpenSSH_9.7p1'
         ]
 
-        if any(version in response for version in vulnerable_versions):
-            versionvuln = response.strip().decode("utf-8")
-            print(f"[+] Version detected is {versionvuln}")
+        if any(version in response for version in vulnerable_versions): 
             print(f"[+] Server at {ip}:{port} is running a vulnerable version of OpenSSH")
+            versionvuln = response.strip().decode("utf-8") 
+            print(f"[+] Version detected is {versionvuln}")
             return True
         else:
             print(f"[-] Server at {ip}:{port} is not running a vulnerable version of OpenSSH")
